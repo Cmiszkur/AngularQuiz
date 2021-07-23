@@ -1,1 +1,16 @@
-/* You can add global styles to this file, and also import other style files */
+@use '~@angular/material' as mat
+
+@include mat.core()
+
+$dark-primary: mat.define-palette(mat.$purple-palette)
+$dark-accent: mat.define-palette(mat.$blue-gray-palette)
+$dark-theme: mat.define-dark-theme($dark-primary, $dark-accent)
+
+.dark-mode
+    @include mat.core-theme($dark-theme)
+    @include mat.button-theme($dark-theme)
+
+html, body
+    height: 100%
+    margin: 0
+    transition: background-color 0.3s ease

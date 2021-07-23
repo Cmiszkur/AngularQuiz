@@ -1,0 +1,20 @@
+<mat-toolbar>
+    <span>Quiz</span>
+    <span class="spacer"></span>
+    <button 
+        mat-icon-button 
+        (click)='changeTheme("dark-mode")'
+        *ngIf="(themeService.getTheme() | async) == 'light-mode'; else darkTemplate"
+    ><mat-icon svgIcon='moon' aria-hidden="false"></mat-icon>
+    </button>
+
+    <ng-template #darkTemplate>
+        <button mat-icon-button (click)='changeTheme("light-mode")'>
+            <mat-icon svgIcon='sun' aria-hidden="false"></mat-icon>
+        </button>
+    </ng-template>
+
+    <button mat-icon-button>
+        <mat-icon svgIcon='github' aria-hidden="false"></mat-icon>
+    </button>
+</mat-toolbar> 

@@ -1,0 +1,14 @@
+<div class="multiple-choice-question">
+    <div class="text-area">
+        <h1>{{data.question}}</h1>
+        <h3>Category: {{data.category}}</h3>
+    </div>
+    
+    <div class="button-area">
+        <button
+        mat-raised-button color="primary"
+        *ngFor='let answer of data.incorrect_answers.concat(data.correct_answer)'
+        (click)='addNewAnswer(answer)'
+        >{{answer}}</button>
+    </div>
+</div>

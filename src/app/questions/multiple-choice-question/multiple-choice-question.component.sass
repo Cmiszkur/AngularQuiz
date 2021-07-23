@@ -1,0 +1,38 @@
+
+
+
+$breakpoint: 768px
+@media(min-width: $breakpoint)
+    .button-area
+        grid-template-columns: 1fr 1fr
+        grid-gap: 2em
+
+    .multiple-choice-question
+        justify-content: space-evenly !important
+
+
+
+.multiple-choice-question
+    display: flex
+    flex-direction: column
+    justify-content: space-around
+    margin: 10em auto
+    width: fit-content
+    max-width: 50rem
+    height: 25rem
+    padding: 1em
+    border-radius: 20px
+    box-shadow: 0px 0px 8px 1px rgba(0, 0, 0, 0.4)
+
+    .text-area
+        display: flex
+        flex-direction: column
+
+        h1, h2, h3
+            text-align: center
+            
+    .button-area
+        display: grid
+
+        button
+            margin-bottom: 0.8em
