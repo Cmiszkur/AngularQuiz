@@ -7,7 +7,7 @@
     <div class="button-area">
         <button
         mat-raised-button color="primary"
-        *ngFor='let answer of data.incorrect_answers.concat(data.correct_answer)'
+        *ngFor='let answer of answers'
         (click)='addNewAnswer(answer)'
         >{{answer}}</button>
     </div>
