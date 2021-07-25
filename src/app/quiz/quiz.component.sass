@@ -1,2 +1,24 @@
 .quiz-wrapper
     padding: 0.6em
+    position: relative
+
+.inline-dots-progress
+    display: flex
+    justify-content: space-between
+    flex-direction: row
+    position: absolute
+    top: calc(var(--dot-unit) * 3)
+    left: calc(50% - var(--half-width))
+    width: calc(var(--half-width) * 2)
+
+    .progress-dot
+        width: var(--dot-unit)
+        height: var(--dot-unit)
+        border-radius: 1rem
+        // transition: background-color 0.3s ease
+
+    .active
+        background-color: var(--second-color)
+
+    .inactive
+        background-color: gray
