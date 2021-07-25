@@ -11,8 +11,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { QuizComponent } from './quiz/quiz.component';
 import { QuestionDirective } from './directives/question.directive';
 import { MultipleChoiceQuestionComponent } from './questions/multiple-choice-question/multiple-choice-question.component';
-import { BooleanChoiceQuestionComponent } from './questions/boolean-choice-question/boolean-choice-question.component';
-
 
 @NgModule({
   declarations: [
@@ -21,8 +19,7 @@ import { BooleanChoiceQuestionComponent } from './questions/boolean-choice-quest
     QuizFormComponent,
     QuizComponent,
     QuestionDirective,
-    MultipleChoiceQuestionComponent,
-    BooleanChoiceQuestionComponent
+    MultipleChoiceQuestionComponent
   ],
   imports: [
     BrowserModule,

@@ -1,4 +1,4 @@
-import { BooleanChoiceQuestionComponent } from './../questions/boolean-choice-question/boolean-choice-question.component';
+// import { BooleanChoiceQuestionComponent } from './../questions/boolean-choice-question/boolean-choice-question.component';
 import { MultipleChoiceQuestionComponent } from './../questions/multiple-choice-question/multiple-choice-question.component';
 import { QuestionItem } from './../Question-Item';
 import { Question } from './../interfaces';
@@ -62,11 +62,12 @@ export class QuestionsService {
               question.correct_answer = decodeURIComponent(question.correct_answer)
               question.incorrect_answers = question.incorrect_answers.map(incorrectAnswer => decodeURIComponent(incorrectAnswer))
 
-              if(question.type === 'multiple'){
-                return new QuestionItem(MultipleChoiceQuestionComponent, question)
-              }else{
-                return new QuestionItem(BooleanChoiceQuestionComponent, question)
-              }
+              // if(question.type === 'multiple'){
+              //   return new QuestionItem(MultipleChoiceQuestionComponent, question)
+              // }else{
+              //   return new QuestionItem(BooleanChoiceQuestionComponent, question)
+              // }
+              return new QuestionItem(MultipleChoiceQuestionComponent, question)
             })
             
           }else{

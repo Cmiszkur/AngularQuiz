@@ -1,3 +1,10 @@
 <div class="quiz-wrapper">
+    <div class="inline-dots-progress">
+        <div 
+        class="progress-dot"
+        *ngFor='let dot of (dotsArray$ | async)'
+        [ngClass]='dot === "active" ? "active" : "inactive"'
+        ></div>
+    </div>
     <ng-template appQuestion (newAnswerEmitter)='captureAnswer($event)'></ng-template>
 </div>

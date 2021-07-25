@@ -2,9 +2,10 @@ import { QuestionItem } from './../Question-Item';
 import { QuestionDirective } from './../directives/question.directive';
 import { Question, QuestionComponent } from './../interfaces';
 import { DialogService } from './../services/dialog.service';
-import { Component, ComponentFactoryResolver, OnInit, ViewChild } from '@angular/core';
+import { Component, ComponentFactoryResolver, Inject, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Observable } from 'rxjs';
+import { Observable, BehaviorSubject } from 'rxjs';
+import { DOCUMENT } from '@angular/common';
 
 
 @Component({
@@ -16,17 +17,22 @@ export class QuizComponent implements OnInit {
 
   currentQuestionIndex = -1
   questions: QuestionItem[] = []
+  dotsArray =  new BehaviorSubject([''])
+  dotsArray$: Observable<any[]> = this.dotsArray.asObservable()
   @ViewChild(QuestionDirective, {static: true}) appQuestion!: QuestionDirective
 
   constructor( 
     private route: ActivatedRoute, 
     private dialogService: DialogService,
-    private componentFactoryResolver: ComponentFactoryResolver 
+    private componentFactoryResolver: ComponentFactoryResolver,
+    @Inject(DOCUMENT) private document: Document
   ) { }
 
-  ngOnInit(): void {
+  ngOnInit(): void {   
     this.prefetchQuestions()
+    this.document.documentElement.style.setProperty('--number-of-questions', `${this.questions.length}`)
     this.loadComponent()
+    this.setDotsArray(this.currentQuestionIndex, this.questions.length)
   }
 
   canDeactivate(): Observable<boolean> | boolean {
@@ -37,7 +43,6 @@ export class QuizComponent implements OnInit {
     this.route.data.subscribe(data => {
       const questions: QuestionItem | QuestionItem[] = data.questions
       this.questions = this.questions.concat(questions)
-      console.log(questions)
     })
   }
 
@@ -56,8 +61,17 @@ export class QuizComponent implements OnInit {
   }
 
   captureAnswer(answer: [string, boolean]): void {
-    console.log('answer captured -> ' + answer)
     this.loadComponent()
+    this.setDotsArray(this.currentQuestionIndex, this.questions.length)
+  }
+
+  setDotsArray(currentQuestion: number, numberOfQuestions: number) {
+    // if(curre)
+    let dotsArray = new Array(numberOfQuestions)
+    dotsArray = dotsArray.fill("inactive")
+    dotsArray[currentQuestion] = 'active'
+    console.log(dotsArray)
+    this.dotsArray.next(dotsArray)
   }
 
 }
